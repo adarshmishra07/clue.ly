@@ -15,15 +15,10 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import {
-  Upload,
-  Camera,
-  Image as ImageIcon,
-  X,
-  CheckCircle,
-} from "lucide-react";
+import { Upload, Camera, Image as ImageIcon } from "lucide-react";
 import { useCluelyStore } from "@/store/cluely-store";
 import { ImageState } from "@/types/app";
+import Image from "next/image";
 
 export function UploadZone() {
   const { image, uploadProgress, setImage, setUploadProgress } =
@@ -61,7 +56,7 @@ export function UploadZone() {
         const url = URL.createObjectURL(file);
 
         // Get image dimensions
-        const img = new Image();
+        const img = new window.Image();
         img.onload = () => {
           const imageState: ImageState = {
             id: crypto.randomUUID(),
@@ -96,14 +91,7 @@ export function UploadZone() {
     disabled: isProcessing,
   });
 
-  const handleRemoveImage = () => {
-    if (image?.url) {
-      URL.revokeObjectURL(image.url);
-    }
-    setImage(null);
-    setUploadProgress(0);
-    setError(null);
-  };
+  // Removed unused handleRemoveImage function - functionality handled by reset button
 
   return (
     <div className="w-full">
@@ -188,10 +176,12 @@ export function UploadZone() {
                 ratio={16 / 9}
                 className="rounded-lg overflow-hidden border shadow-lg"
               >
-                <img
+                <Image
                   src={image.url}
                   alt="Uploaded image"
-                  className="object-contain w-full h-full bg-muted"
+                  fill
+                  className="object-contain bg-muted"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </AspectRatio>
             </div>

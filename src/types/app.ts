@@ -52,6 +52,7 @@ export interface CluelyActions {
   toggleSoulId: () => void;
   generateRemix: () => Promise<void>;
   resetSession: () => void;
+  editAgain: () => void;
   setUploadProgress: (progress: number) => void;
   setActiveView: (view: ActiveView) => void;
   setGenerationProgress: (progress: number, step?: string) => void;

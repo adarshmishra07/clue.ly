@@ -8,7 +8,7 @@ import {
   DownloadFormat,
   GeneratedImage,
 } from "@/types/app";
-import { BrandConfig } from "@/types/brand";
+// Removed unused BrandConfig import
 
 const initialState = {
   // Core State
@@ -51,7 +51,7 @@ export const useCluelyStore = create<CluelyStore>()(
       },
 
       generateRemix: async () => {
-        const { image, selectedBrand, soulIdEnabled } = get();
+        const { image, selectedBrand } = get();
 
         if (!image || !selectedBrand) {
           throw new Error("Image and brand selection required");
@@ -109,6 +109,21 @@ export const useCluelyStore = create<CluelyStore>()(
 
       setGenerationError: (error) => {
         set({ generationError: error });
+      },
+
+      // Edit Again Action
+      editAgain: () => {
+        const { image, selectedBrand } = get();
+        if (image && selectedBrand) {
+          set({
+            outputs: [],
+            isGenerating: false,
+            generationProgress: 0,
+            generationStep: "",
+            generationError: null,
+            activeView: "brand-select",
+          });
+        }
       },
     }),
     {

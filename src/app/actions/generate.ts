@@ -57,11 +57,11 @@ export async function generateBrandRemix(
     }
 
     return result;
-  } catch (error) {
-    console.error("Server action error:", error);
+  } catch {
+    console.error("Server action error");
     return {
       success: false,
-      error: error instanceof Error ? error.message : "Generation failed",
+      error: "Generation failed",
     };
   }
 }
@@ -86,7 +86,7 @@ export async function validateApiKey(): Promise<{
       valid: isValid,
       error: isValid ? undefined : "Invalid API key",
     };
-  } catch (error) {
+  } catch {
     return {
       valid: false,
       error: "Failed to validate API key",

@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useCluelyStore } from "@/store/cluely-store";
-import { BrandConfig } from "@/types/brand";
 import { toast } from "sonner";
 
 // Convert blob URL to File object
