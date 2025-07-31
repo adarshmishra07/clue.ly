@@ -66,13 +66,12 @@ export async function generateBrandRemix(
       };
     }
 
-    // TEMPORARY FIX: Use user's image as BOTH reference and product to test pure preservation
-    // This should result in the same image with minimal changes if prompt strength is working
+    // PROPER STYLE TRANSFER: Use brand's reference image for style, user's image as product
     const result = await remixService.remixImage({
-      referenceImageUrl: imageData, // User's image as style reference 
-      productImageUrl: imageData, // Same image as product to preserve
-      brand: undefined, // Remove brand logic entirely for testing
-      soulIdEnabled: false, // Disable soul ID for testing
+      referenceImageUrl: brand.referenceImageUrl, // Brand's curated reference image for photographic style
+      productImageUrl: imageData, // User's uploaded product to transform
+      brand,
+      soulIdEnabled,
       originalWidth,
       originalHeight,
     });

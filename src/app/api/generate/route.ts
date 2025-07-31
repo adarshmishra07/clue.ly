@@ -60,9 +60,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Generate brand remix using legacy method for backward compatibility
-    const result = await remixService.remixImageLegacy({
-      imageUrl: base64Image, // Pass base64 data
+    // Generate style transfer using new photographic style transfer method
+    const result = await remixService.remixImage({
+      referenceImageUrl: brand.referenceImageUrl, // Brand's reference image for photographic style
+      productImageUrl: base64Image, // User's product to transform
       brand,
       soulIdEnabled,
       originalWidth,

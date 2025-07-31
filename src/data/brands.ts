@@ -25,6 +25,7 @@ export const BRANDS: BrandConfig[] = [
       "Authentic Nike brand transformation with deep athletic DNA. Premium sportswear styling with signature swoosh elements, performance materials, and iconic Nike aesthetic language.",
     negativePrompt:
       "other brand logos, adidas, puma, under armour, generic sportswear, non-athletic clothing",
+    referenceImageUrl: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1080&q=80", // Nike Air Max style shot - dramatic lighting, clean background
     logoUrl: "/brands/nike-logo.png",
     description: "Iconic athletic brand known for innovation and performance",
     launchDate: new Date("2024-01-01"),
@@ -54,6 +55,7 @@ export const BRANDS: BrandConfig[] = [
       "Authentic Apple brand transformation with premium minimalist DNA. Sophisticated design language with clean lines, premium materials, and iconic Apple aesthetic principles.",
     negativePrompt:
       "other brand logos, colorful elements, cluttered design, non-premium materials, samsung, google, microsoft logos",
+    referenceImageUrl: "https://images.unsplash.com/photo-1556656793-08538906a9f8?w=1080&q=80", // Clean minimal tech product shot - soft lighting, white background
     logoUrl: "/brands/apple-logo.png",
     description: "Premium technology brand focused on design and innovation",
     launchDate: new Date("2024-01-01"),
@@ -83,6 +85,7 @@ export const BRANDS: BrandConfig[] = [
       "Authentic Supreme brand transformation with street culture DNA. Bold streetwear styling with signature red box logo elements and exclusive hype aesthetic language.",
     negativePrompt:
       "other streetwear brands, off-white, bape, stussy, generic streetwear, corporate clothing",
+    referenceImageUrl: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1080&q=80", // Bold streetwear shot - urban setting, high contrast
     logoUrl: "/brands/supreme-logo.png",
     description:
       "Iconic streetwear brand known for bold design and exclusivity",
@@ -113,6 +116,7 @@ export const BRANDS: BrandConfig[] = [
       "Authentic Aesop brand transformation with artisanal beauty DNA. Sophisticated natural styling with signature apothecary elements and premium craft aesthetic language.",
     negativePrompt:
       "other beauty brands, bright colors, plastic materials, generic beauty products, sephora, ulta",
+    referenceImageUrl: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=1080&q=80", // Artisanal beauty products - warm lighting, natural textures
     logoUrl: "/brands/aesop-logo.png",
     description:
       "Premium beauty brand known for artisanal products and sophisticated design",
@@ -143,6 +147,7 @@ export const BRANDS: BrandConfig[] = [
       "Authentic Tesla brand transformation with innovative automotive DNA. Futuristic styling with signature electric vehicle elements and cutting-edge aesthetic language.",
     negativePrompt:
       "other car brands, ford, bmw, mercedes, gas vehicles, traditional automotive, oil, gasoline",
+    referenceImageUrl: "https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=1080&q=80", // Sleek modern car - dramatic lighting, futuristic feel
     logoUrl: "/brands/tesla-logo.png",
     description:
       "Innovative automotive brand focused on electric vehicles and sustainability",
@@ -178,6 +183,7 @@ export const BRANDS: BrandConfig[] = [
       "Authentic Patagonia brand transformation with outdoor adventure DNA. Rugged outdoor styling with signature mountain elements and sustainable aesthetic language.",
     negativePrompt:
       "other outdoor brands, north face, columbia, rei, indoor clothing, urban fashion",
+    referenceImageUrl: "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=1080&q=80", // Outdoor gear in mountain setting - natural lighting, rugged feel
     logoUrl: "/brands/patagonia-logo.png",
     description:
       "Outdoor brand focused on environmental responsibility and adventure",

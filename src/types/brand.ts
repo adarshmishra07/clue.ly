@@ -43,6 +43,9 @@ export interface BrandConfig {
   soulPrompt?: string; // Enhanced prompt for Soul ID mode
   negativePrompt?: string;
 
+  // Style Transfer Reference
+  referenceImageUrl: string; // High-quality reference image that represents this brand's photographic style/vibe
+
   // Metadata
   logoUrl: string;
   description: string;

@@ -50,11 +50,11 @@ export class BrandRemixService {
         referenceImageUrl
       );
 
-      // 2. Generate style transfer prompt using detailed analysis
+      // 2. Generate PURE photographic style transfer prompt (no brand logic)
       const prompt = BrandRemixService.generateStyleTransferPrompt(
         styleAnalysis,
-        brand,
-        soulIdEnabled
+        undefined, // No brand logic - pure photographic style only
+        false // No soul ID - pure photographic style only
       );
 
       console.log("=== STYLE TRANSFER DEBUG ===");
@@ -72,7 +72,7 @@ export class BrandRemixService {
         width,
         height,
         n: 4,
-        response_format: "url",
+        response_format: "base64", // Switch to base64 to avoid URL timeout issues
         prompt_strength: 0.35, // Lower strength to preserve original product better
       });
 
@@ -128,11 +128,11 @@ export class BrandRemixService {
   ): string {
     let prompt = "";
 
-    // SIMPLE TEST: Minimal prompt to test if FLUX can preserve product identity at all
-    prompt += "Keep the EXACT same shoe with identical brand logos, text, and design. ";
-    prompt += "Only adjust the lighting and background slightly. ";
-    prompt += "Preserve all brand elements, logos, text, colors, and product details completely. ";
-    prompt += "This is the same product photographed with different lighting. ";
+    // PHOTOGRAPHIC STYLE TRANSFER: Copy only the vibe/mood, preserve product identity
+    prompt += "Apply the photographic style and mood from the reference image to the product photo. ";
+    prompt += "PRESERVE: Keep the EXACT same product with identical brand logos, text, design, and colors. ";
+    prompt += "TRANSFORM: Only the lighting, background, composition, and photographic mood to match the reference style. ";
+    prompt += "This is the same product shot in a different photographic style. ";
 
     return prompt;
   }
@@ -169,7 +169,7 @@ export class BrandRemixService {
         width,
         height,
         n: 4,
-        response_format: "url",
+        response_format: "base64", // Switch to base64 to avoid URL timeout issues
       });
 
       const images: GeneratedImage[] = result.map((img) => ({

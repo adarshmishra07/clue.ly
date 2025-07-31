@@ -262,10 +262,8 @@ Extract only the photographic DNA that makes this image visually appealing, not 
     // Color grading and processing (post-production style)
     prompt += `Color processing: ${analysis.tone} treatment. `;
 
-    // Color palette (for grading, not product colors)
-    if (analysis.colorPalette.length > 0) {
-      prompt += `Color grading palette: ${analysis.colorPalette.join(", ")} (apply as photographic treatment, not product colors). `;
-    }
+    // Focus on mood and atmosphere, not specific colors
+    // Color palette removed - we're copying vibe, not changing product colors
 
     // Overall photographic DNA
     prompt += `Photographic essence: ${analysis.description}`;

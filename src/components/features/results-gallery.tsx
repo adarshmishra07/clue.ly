@@ -137,6 +137,13 @@ export function ResultsGallery() {
                       fill
                       className="object-contain"
                       sizes="(max-width: 768px) 50vw, 25vw"
+                      onError={(e) => {
+                        console.error(`Failed to load image ${index + 1}:`, image.url.substring(0, 100) + "...");
+                        console.error("Image load error:", e);
+                      }}
+                      onLoad={() => {
+                        console.log(`Successfully loaded image ${index + 1}`);
+                      }}
                     />
                   </AspectRatio>
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
