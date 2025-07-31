@@ -26,18 +26,19 @@ export async function POST(request: NextRequest) {
     let brand: BrandConfig;
     try {
       brand = JSON.parse(brandData);
-    } catch (error) {
+    } catch {
       return NextResponse.json(
         { success: false, error: "Invalid brand data" },
         { status: 400 }
       );
     }
 
-    // Validate API key
+    // Validate API keys
     const apiKey = process.env.TOGETHER_API_KEY;
-    if (!apiKey) {
+    const openaiApiKey = process.env.OPENAI_API_KEY;
+    if (!apiKey || !openaiApiKey) {
       return NextResponse.json(
-        { success: false, error: "Together AI API key not configured" },
+        { success: false, error: "Together AI or OpenAI API key not configured" },
         { status: 500 }
       );
     }
@@ -48,7 +49,7 @@ export async function POST(request: NextRequest) {
     const base64Image = buffer.toString("base64");
 
     // Create remix service
-    const remixService = new BrandRemixService(apiKey);
+    const remixService = new BrandRemixService(apiKey, openaiApiKey);
 
     // Validate API key with Together AI
     const isValidKey = await remixService.validateApiKey();
@@ -59,8 +60,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Generate brand remix
-    const result = await remixService.remixImage({
+    // Generate brand remix using legacy method for backward compatibility
+    const result = await remixService.remixImageLegacy({
       imageUrl: base64Image, // Pass base64 data
       brand,
       soulIdEnabled,

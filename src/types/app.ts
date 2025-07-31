@@ -99,3 +99,35 @@ export interface ShareConfig {
   includeBrand: boolean;
   customMessage?: string;
 }
+
+export interface StyleTransferParams {
+  referenceImageUrl: string; // The style to steal from
+  productImageUrl: string; // The product to apply style to
+  brand?: BrandConfig; // Optional brand constraints
+  soulIdEnabled?: boolean;
+  originalWidth?: number;
+  originalHeight?: number;
+}
+
+export interface StyleAnalysis {
+  lighting: string;
+  mood: string;
+  composition: string;
+  colorPalette: string[];
+  aesthetic: string;
+  description: string;
+}
+
+// Update existing GeneratedImage interface if needed
+
+export interface GeneratedImage {
+  id: string;
+  url: string;
+  model: string;
+  prompt: string;
+  brandId: string;
+  soulIdEnabled: boolean;
+  generatedAt: Date;
+  styleTransfer?: boolean; // NEW: Flag for style transfer vs brand replacement
+  referenceImage?: string; // NEW: Reference image used for style
+}
